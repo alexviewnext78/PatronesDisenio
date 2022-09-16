@@ -92,17 +92,18 @@ public class Main {
     }
 
     private static void probarProxy(){
-    	//Se utiliza como intermediario para acceder a un objeto, actúa como sustituto del objeto original
-    	//Las llamadas al objeto acaban ocurriendo indirectamente a través del objeto proxy
-    	//El patrón proxy se divide en cuatro grupos: 
-    	//Proxy remoto: Representa un objeto que está remoto 
-    	//Proxy virtual: Crea objetos costosos por encargo, solo se habilitan los módulos cuando los usa el usuario
-    	//Proxy de protección: Se encarga de controlar el acceso a un objeto, ofrece seguridad
-    	//Smart proxy: Suele encargarse de hacer tareas de limpieza adicionales cuando un cliente accede a un objeto
-    	//Ventajas: No ofrece mucha más seguridad a la hora de acceder al objeto
-    	//evitamos la dupllicación de objetos, mejorando el rendimiento
-    	//Desventajas: Estamos añadiendo otra capa de abstracción al código y algunos clienes pueden acceder
-    	//directamente al RealSubject o al Proxy y esto puede generar errores
+    	/* Se utiliza como intermediario para acceder a un objeto, actúa como sustituto del objeto original
+    	 * Las llamadas al objeto acaban ocurriendo indirectamente a través del objeto proxy
+    	 * El patrón proxy se divide en cuatro grupos: 
+    	 * Proxy remoto: Representa un objeto que está remoto 
+    	 * Proxy virtual: Crea objetos costosos por encargo, solo se habilitan los módulos cuando los usa el usuario
+    	 * Proxy de protección: Se encarga de controlar el acceso a un objeto, ofrece seguridad
+    	 * Smart proxy: Suele encargarse de hacer tareas de limpieza adicionales cuando un cliente accede a un objeto
+    	 * Ventajas: No ofrece mucha más seguridad a la hora de acceder al objeto
+    	 * evitamos la dupllicación de objetos, mejorando el rendimiento
+    	 * Desventajas: Estamos añadiendo otra capa de abstracción al código y algunos clienes pueden acceder
+    	 * directamente al RealSubject o al Proxy y esto puede generar errores
+    	 */
         Internet internet = new ProxyInternet();
         try {
             internet.connectTo("udemy.com");
@@ -113,15 +114,16 @@ public class Main {
     }
 
     private static void probarFlyweight(){
-    	//Un flyweight es un objeto compartido que se puede usar en múltiples contextos simultaneamente
-    	//el flyweigth actúa como un objeto independiente en cada contexto y de ahí su ventaja
-    	//Al compartir estados para soportar un gran número de objetos pequeños aumentamos la eficiencia 
-    	//de espacio en memoria
-    	//Es muy util cuando necesitamos muchos objetos similares que solo se diferencian en unos pocos 
-    	//parámetros pero que el resto de parámetros son comunes al resto de los objetos
-    	//Usa menos memoria porque permite crear menos objetos compartirlos
-    	//Ventajas: Reduce mucho la cantidad de memoria, reduce el número de objetos en memoria
-    	//Desventajas: Suele ser complicado y puede ser de dificil depuración
+    	/* Un flyweight es un objeto compartido que se puede usar en múltiples contextos simultaneamente
+    	 * el flyweigth actúa como un objeto independiente en cada contexto y de ahí su ventaja
+    	 * Al compartir estados para soportar un gran número de objetos pequeños aumentamos la eficiencia 
+    	 * de espacio en memoria
+    	 * Es muy util cuando necesitamos muchos objetos similares que solo se diferencian en unos pocos 
+    	 * parámetros pero que el resto de parámetros son comunes al resto de los objetos
+    	 * Usa menos memoria porque permite crear menos objetos compartirlos
+    	 * Ventajas: Reduce mucho la cantidad de memoria, reduce el número de objetos en memoria
+    	 * Desventajas: Suele ser complicado y puede ser de dificil depuración
+    	 */
         for(int i=0; i<15; i++){
         	//Aunque se hayan creado 15 enemigos solo se han usado dos objetos, un asesino y un detective
             Enemy enemy = EnemyFactory.getEnemy(getRandomEnemyType());
@@ -146,15 +148,16 @@ public class Main {
     private static String[] weapon = {"Fusil", "Revolver", "Pistola", "Metralleta", "Lanza Granadas", "9mm"};
 
     private static void probarFacade(){
-    	//Busca simplificar el sistema para el cliente proporcionando una interfaz unificada
-    	//para un conjunto de subsistemas
-    	//Cuando tenemos un sistema complejo y queremos exponer su uso de manera simplificada
-    	//esta debe ser la opción a utilizar
-    	//Su objetivo final es ocultar la complejidad interna a través de una única interfaz
-    	//que parece simple de utilizar desde un punto de vista exterior
-    	//Ventajas: Hace muy facil la implementación al cliente al ofrecer una interfaz simple 
-    	//con todos los objetos que se usan
-    	//Desventajas: Puede ser dificail de implementar cuando el subsistema es complejo
+    	/* Busca simplificar el sistema para el cliente proporcionando una interfaz unificada
+    	 * para un conjunto de subsistemas
+    	 * Cuando tenemos un sistema complejo y queremos exponer su uso de manera simplificada
+    	 * esta debe ser la opción a utilizar
+    	 * Su objetivo final es ocultar la complejidad interna a través de una única interfaz
+    	 * que parece simple de utilizar desde un punto de vista exterior
+    	 * Ventajas: Hace muy facil la implementación al cliente al ofrecer una interfaz simple 
+    	 * con todos los objetos que se usan
+    	 * Desventajas: Puede ser dificail de implementar cuando el subsistema es complejo
+    	*/
         CreditMarket creditMarket = new CreditMarket();
         creditMarket.showCreditBlack();
         creditMarket.showCreditGold();
@@ -556,14 +559,14 @@ public class Main {
     private static void probarAbstractFactory(){
     	/*
     	 * Es una fábrica de fábricas del patrón FactoryMethod
-    	 * Se utilizará cuando usistema debe ser independiete de cóm son creados sus objetos
+    	 * Se utilizará cuando un sistema debe ser independiete de cómo son creados sus objetos
     	 * Ocultamos a los clientes las clases de implementación, aisla el código del cliente de las clases concretas
     	 * Se usa cuando el sistema debe ser independiente de como se crean, se componen y se representan
     	 * los objetos que son necesarios
     	 * Desventajas: Para crear los productos deben modificarse tanto las fabricas abstractas como las concretas
     	 */ 
         AbstractFactory abstractFactoryCard = FactoryProvider.getFactory("Card");
-        Card tarjeta = (Card) abstractFactoryCard.create("VISA");
+        com.company.creational.abstractfactory.Card tarjeta = (com.company.creational.abstractfactory.Card) abstractFactoryCard.create("VISA");
 
         AbstractFactory abstractFactoryPayment = FactoryProvider.getFactory("PaymentMethod");
         PaymentMethod paymentMethod = (PaymentMethod) abstractFactoryPayment.create("DEBIT");
@@ -579,7 +582,7 @@ public class Main {
     	 * añadirlo a concreteCreator(PaymentFactory)
     	 * Se desacopla la forma en la creación de los objetos
     	 * Gran facilidad para crear un objeto
-    	 * Desventaja: No obliga a crear bastantes clases
+    	 * Desventaja: Nos obliga a crear bastantes clases
     	*/
         Payment payment = PaymentFactory.buildPayment(TypePayment.CARD);
         payment.doPayment();

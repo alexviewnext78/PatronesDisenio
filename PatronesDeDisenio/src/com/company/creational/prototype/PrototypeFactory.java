@@ -29,10 +29,10 @@ public class PrototypeFactory {
         //Este patrón se usa para  clases con muchos atributos, por eso se clona en lugar de crearse, 
         //porque clonar requiere menos recursos, en nuestro caso de ejemplo solo tiene uno
         visa.setName("Esta tarjeta es Visa con numero 0000");
-        prototypes.put(VISA, visa);
+        prototypes.put(CartType.VISA, visa);
 
         Amex amex = new Amex();
         amex.setName("Esta tarjeta es Amex con numero 0000");
-        prototypes.put(AMEX, amex);
+        prototypes.put(CartType.AMEX, amex);
     }
 }

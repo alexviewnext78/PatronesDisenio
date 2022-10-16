@@ -6,6 +6,7 @@ package com.company.behavioral.command;
 public class CreditCardInvoker {
 
     private Command command;
+    
     public CreditCardInvoker(){};
 
     public void setCommand(Command command){

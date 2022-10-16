@@ -1,0 +1,3 @@
+Nos situamos en la carpeta C:\Users\alexf\git\PatronesDeDisenio>
+
+Dentro de esta carpeta hacemos: git push origin main

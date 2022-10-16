@@ -1,7 +1,5 @@
 package com.company.behavioral.templatemethod;
 
-import com.company.creational.abstractfactory.PaymentMethod;
-
 /**
  * Created by albertopalomarrobledo on 1/8/19.
  */

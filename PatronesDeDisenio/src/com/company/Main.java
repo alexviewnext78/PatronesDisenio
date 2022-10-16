@@ -182,7 +182,7 @@ public class Main {
 
         com.company.structural.decorator.Credit goldSecureInternational = new com.company.structural.decorator.Gold();
         goldSecureInternational = new InternationalPaymentDecorator(goldSecureInternational);
-        goldSecureInternational = new SecureDecorator(goldSecureInternational);
+        goldSecureInternational = new SecurePaymentDecorator(goldSecureInternational);
         //Se podría añadir un nuevo ConreteDecorator a goldSecureInternational sin modificar este código
 
         System.out.println("----Tarjeta Gold con configuración----");
@@ -203,13 +203,13 @@ public class Main {
     	 * (Ej: CuentaHipoteca)
     	 * Desventajas: Es dificil de depurar porque se pueden crear muchos pequeños objetos encadenados
     	 */
-        CuentaComponent cuentaCorrienteAlberto = new CuentaCorriente(1000.0, "Alberto");
-        CuentaComponent cuentaAhorroAlberto = new CuentaAhorro(20000.0, "Alberto");
+        CuentaComponent cuentaCorrienteSergio = new CuentaCorriente(1000.0, "Sergio");
+        CuentaComponent cuentaAhorroSergio = new CuentaAhorro(20000.0, "Sergio");
         CuentaComponent cuentaAhorroAlex = new CuentaAhorro(20000.0, "Alex");
 
         CuentaComposite cuentaComposite = new CuentaComposite();
-        cuentaComposite.addCuenta(cuentaCorrienteAlberto);
-        cuentaComposite.addCuenta(cuentaAhorroAlberto);
+        cuentaComposite.addCuenta(cuentaCorrienteSergio);
+        cuentaComposite.addCuenta(cuentaAhorroSergio);
         cuentaComposite.addCuenta(cuentaAhorroAlex);
 
         cuentaComposite.showAccountName();
@@ -380,6 +380,7 @@ public class Main {
         System.out.println(article.getText());
 
         carataker.addMemento(article.createMemento());
+        
         article.setText(article.getText() + " protagonizada por Guy Pearce");
         System.out.println(article.getText());
 
@@ -398,8 +399,8 @@ public class Main {
         article.restoreMemento(memento2);
         System.out.println(article.getText());
 
-        article.setText(article.getText() + " del aÃ±o ");
-
+        article.setText(article.getText() + " del aÃ±o");
+        System.out.println(article.getText());
     }
 
     private static void probarMediator(){
